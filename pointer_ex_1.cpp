@@ -1,5 +1,20 @@
 #include <stdio.h>
 #include <conio.h>
+void int_Ex();
+void char_Ex();
+void string_Ex();
+void intArray_Ex();
+void charArray_Ex();
+void stringArray_Ex();
+
+void main(void) {
+	int_Ex();
+	char_Ex();
+	string_Ex();
+	intArray_Ex();
+	charArray_Ex();
+	stringArray_Ex();
+}
 
 void int_Ex() {
 	int a, * p;
@@ -44,7 +59,7 @@ void intArray_Ex() {
 }
 
 void charArray_Ex() {
-	char arr[5], *p;
+	char arr[5], * p;
 	p = arr;
 	printf("\n문자 배열에 문자 5개 입력 : ");
 	for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); i++) {
@@ -69,13 +84,4 @@ void stringArray_Ex() {
 		printf("%d번째로 입력한 문자열: ", i);
 		puts(*(p + i));
 	}
-}
-
-void main(void) {
-	int_Ex();
-	char_Ex();
-	string_Ex();
-	intArray_Ex();
-	charArray_Ex();
-	stringArray_Ex();
 }

@@ -7,15 +7,17 @@ void string_Ex();
 void intArray_Ex();
 void charArray_Ex();
 void stringArray_Ex();
-void ex1(); // double형 배열을 포인터로 복사하는 함수
-void ex2(); // 정수형 배열에서 포인터로 모든 원소의 값을 n씩 증가시키는 함수
-void ex3(); // 1차원 배열에 소문자 문자열을 포인터로 대문자로 변환하는 함수 (touppper 사용 X)
-void ex4(); // 2차원 배열 1행에 소문자 문자열 입력 후 포인터로 2행에 대문자를 저장하는 함수
-void ex5(); // 포인터로 두 문자열 잇기 == strcat
-void ex6(); // 포인터로 문자열 길이 출력
-void ex7(); // 문자열과 문자 하나를 입력받아 문자열에 해당 문자가 몇 개인지 출력
-void ex8(); // 2차원 정수 배열의 열 합, 행 합 , 총 합을 구하기
-
+void ex1();  // double형 배열을 포인터로 복사하는 함수
+void ex2();  // 정수형 배열에서 포인터로 모든 원소의 값을 n씩 증가시키는 함수
+void ex3();  // 1차원 배열에 소문자 문자열을 포인터로 대문자로 변환하는 함수 (touppper 사용 X)
+void ex4();  // 2차원 배열 1행에 소문자 문자열 입력 후 포인터로 2행에 대문자를 저장하는 함수
+void ex5();  // 포인터로 두 문자열 잇기 == strcat
+void ex6();  // 포인터로 문자열 길이 출력
+void ex7();  // 문자열과 문자 하나를 입력받아 문자열에 해당 문자가 몇 개인지 출력
+void ex8();  // 2차원 정수 배열의 열 합, 행 합 , 총 합을 구하기
+void ex9();  // 오름차순으로 정렬되어 있는 두 일차원 정수 배열 합치기, 병합 배열도 정렬되어 있어야 함
+void ex10(); // 문자열 역순 출력
+void ex11(); // 소문자 문자열에 각 문자가 몇개씩 있는지 출력 -> ex7 응용
 
 void main(void) {
 	//int_Ex();
@@ -31,7 +33,10 @@ void main(void) {
 	//ex5();
 	//ex6();
 	//ex7();
-	ex8();
+	//ex8();
+	//ex9();
+	//ex10();
+	ex11();
 }
 
 void int_Ex() {
@@ -271,3 +276,59 @@ void ex8() {
 	printf("총 합 = %d", sum);
 	*/
 }
+
+void ex9() {
+	int a[] = { 1, 2, 5, 7, 9, 14}, *ap;
+	int b[] = { 2, 3, 6, 8, 13, 14}, *bp;
+	ap = a;
+	bp = b;
+	int c[sizeof(a) / sizeof(a[0]) + sizeof(b) / sizeof(b[0])];
+	int big = (sizeof(a) / sizeof(a[0]) > sizeof(b) / sizeof(b[0])) ? sizeof(a) / sizeof(a[0]) : sizeof(b) / sizeof(b[0]);
+	for (int i = 0; i < big; i++) {
+		if (i == big - 1 && sizeof(c)/sizeof(c[0])%2 == 1) {
+			c[i * 2] = (big == sizeof(a) / sizeof(a[0])) ? *ap : *bp;
+		}
+		else {
+			if (*ap == *bp) {
+				c[i * 2] = *ap++;
+				c[i * 2 + 1] = *bp++;
+			}
+			else if (*ap > *bp) {
+				c[i * 2] = *bp++;
+				c[i * 2 + 1] = *ap++;
+			}
+			else {
+				c[i * 2] = *ap++;
+				c[i * 2 + 1] = *bp++;
+			}
+		}
+	}
+	for (int i = 0; i < sizeof(c) / sizeof(c[0]); i++) {
+		printf("%d  ", c[i]);
+	}
+}
+
+void ex10() {
+	char str[50], *p;
+	p = str;
+	printf("단어 입력 : ");
+	gets_s(p, 50);
+	printf("입력한 단어를 반대로 출력 : ");
+	int i;
+	for (i = 0; *p; i++, p++) {
+	}
+	for (; i >= 0; i--, p--) {
+		printf("%c", *p);
+	}
+}
+
+void ex11() {
+	char str[50], *p;
+	p = str;
+	printf("소문자 문자열 입력 : ");
+	gets_s(p, 50);
+	for (int i = 0; *p; i++) {
+
+	}
+}
+
